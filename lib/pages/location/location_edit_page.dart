@@ -84,7 +84,7 @@ class _LocationEditPageState extends ConsumerState<LocationEditPage> {
     if (_existing == null) {
       await notifier.add(l);
     } else {
-      await notifier.update(l);
+      await notifier.updateLocation(l);
     }
     if (mounted) Navigator.of(context).pop();
   }

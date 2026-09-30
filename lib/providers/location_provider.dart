@@ -19,7 +19,7 @@ class LocationListNotifier extends AsyncNotifier<List<Location>>{
     await reload();
   }
 
-  Future<void> update(Location loc) async {
+  Future<void> updateLocation(Location loc) async {
     await SqliteService.instance.updateLocation(loc);
     await reload();
   }

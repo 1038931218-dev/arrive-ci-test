@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:flutter/material.dart';
 import 'pages/main_scaffold.dart';
 import 'pages/about_page.dart';
 import 'pages/location/location_list_page.dart';

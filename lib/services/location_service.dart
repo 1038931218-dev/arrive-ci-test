@@ -17,9 +17,7 @@ class LocationService {
     if (!enabled) return null;
     try {
       return await Geolocator.getCurrentPosition(
-        locationSettings: const LocationSettings(
-          accuracy: LocationAccuracy.best,
-        ),
+        desiredAccuracy: LocationAccuracy.best,
       );
     } catch (_) {
       return null;
@@ -28,10 +26,8 @@ class LocationService {
 
   Stream<Position> positionStream() {
     return Geolocator.getPositionStream(
-      const LocationSettings(
-        accuracy: LocationAccuracy.high,
-        distanceFilter: 10,
-      ),
+      desiredAccuracy: LocationAccuracy.high,
+      distanceFilter: 10,
     );
   }
 
@@ -39,9 +35,7 @@ class LocationService {
   Future<Position?> getHighAccuracyPosition() async {
     try {
       return await Geolocator.getCurrentPosition(
-        locationSettings: const LocationSettings(
-          accuracy: LocationAccuracy.high,
-        ),
+        desiredAccuracy: LocationAccuracy.high,
       );
     } catch (_) {
       return null;

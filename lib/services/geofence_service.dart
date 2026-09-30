@@ -72,7 +72,7 @@ class GeofenceService {
         if (cur != null) {
           final curDist = DistanceUtils.distanceMeters(
             lat, lng, cur.latitude, cur.longitude);
-          if (curDist - (targetDist ?? 0) < AppConstants.switchMinDelta) {
+          if (curDist - targetDist < AppConstants.switchMinDelta) {
             targetId = currentBroadcastId;
             targetDist = curDist;
           }
@@ -118,7 +118,7 @@ class GeofenceService {
     if (targetId != null) {
       final target = await _db.getLocation(targetId);
       if (target != null) {
-        var state = await _db.getFenceState(targetId) ??
+        final state = await _db.getFenceState(targetId) ??
             FenceState(locationId: targetId, isInside: true);
         final last = state.lastRemindAt;
         final intervalMs = target.repeatMinutes * 60 * 1000;

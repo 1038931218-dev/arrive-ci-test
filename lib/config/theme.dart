@@ -6,7 +6,7 @@ class AppTheme {
   static ThemeData get light {
     return ThemeData(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: Color(0xFF3F51B5),
+        seedColor: const Color(0xFF3F51B5),
         brightness: Brightness.light,
       ),
       useMaterial3: true,
@@ -16,7 +16,7 @@ class AppTheme {
   static ThemeData get dark {
     return ThemeData(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: Color(0xFF7986CB),
+        seedColor: const Color(0xFF7986CB),
         brightness: Brightness.dark,
       ),
       useMaterial3: true,
