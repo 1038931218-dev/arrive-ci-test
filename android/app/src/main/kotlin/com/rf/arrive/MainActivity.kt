@@ -1,4 +1,4 @@
-package com.example.arrive_ci_test
+package com.rf.arrive
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,38 +1,39 @@
-name: Build Flutter APK
+name: Build APK
 
 on:
   push:
+    branches: [ main ]
+  pull_request:
     branches: [ main ]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Java 17
+      - name: Setup Java
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: 'zulu'
           java-version: '17'
 
-      - name: Set up Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.5'
           channel: 'stable'
           cache: true
 
-      - name: Flutter version and doctor
-        run: |
-          flutter --version
-          flutter doctor -v
+      - name: Flutter version
+        run: flutter --version
 
-      - name: Get dependencies
+      - name: Pub get
         run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze --no-fatal-infos --no-fatal-warnings
 
       - name: Build debug APK
         run: flutter build apk --debug
